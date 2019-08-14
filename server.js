@@ -3,22 +3,25 @@ const path = require("path");
 //TODO: require sequelize 
 // const routes = require("./routes");
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT ||8090;
 const app = express();
-const apiRoutes = require("./routes/apiRoutes");
+// const apiRoutes = require("./routes/apiRoutes");
 
+require("./routes/loginRoute")(app);
+require("./routes/topicRoutes")(app);
+require("./routes/userRoutes")(app);
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static("client"));
 }
-
-// Use apiRoutes
-app.use("/api", apiRoutes);
-/ TODO: When routes are ready to go, uncomment this line. Similar to the activities it will look something like: 
+//I commendted these out because we dont have an Apiroute section
+// Use apiRoute//s
+// app.use("/api", apiRoutes);
+//TODO: When routes are ready to go, uncomment this line. Similar to the activities it will look something like: 
 // `app.use("/api/"", routes)`
 
 // Add routes, both API and view
