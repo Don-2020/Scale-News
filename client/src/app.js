@@ -1,13 +1,18 @@
 import React from "react";
+
 import Wtf from "./Components/Navbar/navbar"
 import ControlledCarousel from "./Components/Carousel/carousel"
 import { Container, Row, Col } from "./Components/Grid"
 
+
+
 //create grid here
+
 
 function App() {
   return (
     <div>
+
       <Wtf />
       <Container >
         <Row >
@@ -44,8 +49,10 @@ function App() {
             <h1>test1</h1>
           </Col>
         </Row>
+
     </div>
   );
 }
+
 
 export default App;
