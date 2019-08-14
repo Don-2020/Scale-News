@@ -1,4 +1,4 @@
-var db = require("../models");
+// var db = require("../models");
 var scrap = require("cheerio")
 
 module.exports = function(app) {
