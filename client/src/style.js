@@ -1,9 +1,9 @@
 const style = {
     test1: {
-        marginTop: '40px',
+        marginTop: '20px',
         color: 'black',
         textAlign: 'center',
-        fontFamily: 'Roboto',
+        fontFamily: 'Yanone Kaffeesatz',
         fontSize: '19px',
         lineHeight: '22px',
     },
@@ -12,7 +12,7 @@ const style = {
         textAlign: 'center',
         fontFamily: 'Londrina Shadow',
         fontSize: '64px',
-        lineHeight: '76px'
+        lineHeight: '66px'
     },
     test3: {
         color: '#e9e9e9',
@@ -24,8 +24,11 @@ const style = {
     },
 
     loginbtn: {
+        // width: '100%'
 
-    }
+    },
+
+    
 
 
 }
