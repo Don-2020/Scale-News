@@ -2,10 +2,11 @@ import React from "react";
 import Carousel from 'react-bootstrap/Carousel'
 
 
-function ControlledCarousel() {
+function ControlledCarousel(props) {
   return (
-    <Carousel>
+    // <Carousel>
       <Carousel.Item>
+        <p>{props.title}</p>
         <img
           className="d-block w-100"
           src="https://image.shutterstock.com/image-photo/easter-bunny-rabbit-pink-painted-260nw-1032901183.jpg"
@@ -16,7 +17,7 @@ function ControlledCarousel() {
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
+      /* <Carousel.Item>
         <img
           className="d-block w-100"
           src="https://image.shutterstock.com/image-photo/easter-bunny-rabbit-pink-painted-260nw-1032901183.jpg"
@@ -39,10 +40,10 @@ function ControlledCarousel() {
           <h3>Third slide label</h3>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
         </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
-  )
-};
+      </Carousel.Item> */
+    // </Carousel>
+  
+  )};
 
 // render(<ControlledCarousel />);
 export default ControlledCarousel;

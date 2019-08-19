@@ -5,11 +5,14 @@ const style = {
     },
     
     searchForm: {
-        marginRight: '5%'},
+        marginRight: '5%'
+    },
 
     searchForm1: {
         borderRadius: '0',
-        borderColor: '#20222a'
+        borderColor: '#20222a',
+        width:'68%',
+        float: 'left'
     },
 
     // button1: {
@@ -17,6 +20,7 @@ const style = {
     //     borderRadius: '0',
 
     // },
+    
 
     navLogin: {
 
