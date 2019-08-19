@@ -11,6 +11,8 @@ require("./routes/loginRoute")(app);
 require("./routes/topicRoutes")(app);
 require("./routes/userRoutes")(app);
 
+require("./routes/scrape")(app);
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
