@@ -13,35 +13,49 @@ colors.setTheme({
     warn: 'yellow',
     debug: 'blue',
     error: 'red'
-   });
+});
 
 module.exports = function (app) {
 
     app.get("/api/scrape", function (req, res) {
         console.log("scrape route")
         //console.log(req)
-        var newsArray=[]
+        var newsArray = []
         // axios call to the website 
         axios.get("https://www.allsides.com/unbiased-balanced-news").then(function (res) {
 
             var $ = cheerio.load(res.data)
 
-            $("#block-views-story-id-single-story-block").each(function (i, item) {
-                console.log("***********".red)
-                // console.log(item)
-                var title = $(".story-title").text()
-                console.log("TITLE".red, title)
-                var p = $("p", this).text(); 
-                console.log("p".red, p)
-                // var articles = $(".news-title").text()
-             
-                // create an object with info and push it to an array 
+            // $("#block-views-story-id-single-story-block").each(function (i, item) {
+            //     console.log("***********".red)
+            //     // console.log(item)
+            //     var title = $(".story-title").text()
+            //     console.log("TITLE".red, title)
+            //     var p = $("p", this).text(); 
+            //     console.log("p".red, p)
+            //     // var articles = $(".news-title").text()
 
-            });
+            //     // create an object with info and push it to an array 
 
-            // just to het 3 sub articles
-            $('.view-id-story_id_single_child_articles').each(function (i, item) {
-                // console.log("*********".blue);
+            // });
+
+
+            // TPDO: create an object with info and push it to an array 
+            let title = $('.story-title', "#block-views-story-id-single-story-block").text()
+            console.log("TITLE".red, title)
+
+            let section = 0;
+            let data = {
+
+            }
+            function doOne(i, item) {
+                // console.log(this)
+                // console.log(p = $("div p", this).text());
+                // console.log($('div', this));
+                let p = $("p", "#block-views-story-id-single-story-block" + (section ? '-' + section.toString() : '')).text();
+                // console.log("p".red, p)
+
+                // console.log("*********".verbose, item);
                 let test = $(item).children().text();
                 test = test.split('From the');
                 // console.log(test);
@@ -63,10 +77,67 @@ module.exports = function (app) {
                     .replace('                   ', '')
                     .replace('                   ', '')
                     .replace('                   ', '')
-                    )
-                console.log('RAINBOW'.silly, a);
+                )
+                // console.log('RAINBOW'.silly, a);
+                let src1 = $('.story-id-image', this).children().attr('src');
+                // console.log("src".red, src1)
+                data.paragraph = p;
+                if(src1) {
+                    data.image = src1;
+                }
+                data.other = a;
 
-            })
+            }
+
+
+            // just to het 3 sub articles
+            console.log('========== START HERE ========')
+
+            $('.view-id-story_id_single_child_articles', '#block-views-story-id-single-story-block').each(doOne);
+            data.title = title;
+            console.log(data)
+
+            //  let title1 = $('.story-title', "#block-views-story-id-single-story-block-1").text()
+            // console.log("***********".red)
+            // console.log("TITLE".red, title1)
+            // let p1 = $("p", "#block-views-story-id-single-story-block-1").text();
+            // console.log("p".red, p1)
+
+            // TPDO: create an object with info and push it to an array 
+
+            // just to het 3 sub articles
+            console.log('========== START HERE ========')
+            title = $('.story-title', "#block-views-story-id-single-story-block-1").text()
+            console.log("TITLE".red, title)
+
+            section++;
+
+            $('.view-id-story_id_single_child_articles', '#block-views-story-id-single-story-block-1').each(doOne)
+            data.title = title;
+            console.log(data)
+
+
+            // let src2 = $('.story-id-image').children().attr('src');
+            // let title2 = $('.story-title', "#block-views-story-id-single-story-block-2").text()
+            // console.log("***********".red)
+            // console.log("src".red, src2)
+            // console.log("TITLE".red, title2)
+            // let p2 = $("p", "#block-views-story-id-single-story-block-2").text();
+            // console.log("p".red, p2)
+
+            // // TPDO: create an object with info and push it to an array 
+
+
+
+            // just to het 3 sub articles
+            console.log('========== START HERE ========')
+            title = $('.story-title', "#block-views-story-id-single-story-block-2").text()
+            console.log("TITLE".red, title)
+
+            section++;
+            $('.view-id-story_id_single_child_articles', '#block-views-story-id-single-story-block-2').each(doOne)
+            data.title = title;
+            console.log(data)
 
 
             // let mainStory = $("#block-views-story-id-single-story-block").children().text();
@@ -74,20 +145,20 @@ module.exports = function (app) {
             // let mainStory = $("#block-views-story-id-single-story-block").contents().text().trim();
             // console.log('>>>>>>>>>'.red, mainStory);
 
-                // let title =$("#block-views-story-id-single-story-block").children('.story-title').text()
-                // console.log("title".red, title)
+            // let title =$("#block-views-story-id-single-story-block").children('.story-title').text()
+            // console.log("title".red, title)
 
-                // console.log("***********".red)
-                // console.log(item)
-                // var title = $(".story-title").text()
-                // console.log("TITLE".red, title)
-                // var p = $("p", this).text(); 
-                // console.log("p".red, p)
-                // // var articles = $(".news-title").text()
-                // let articles = $('div', this).hasClass('news-title');
-                // console.log("articles".red, articles)
+            // console.log("***********".red)
+            // console.log(item)
+            // var title = $(".story-title").text()
+            // console.log("TITLE".red, title)
+            // var p = $("p", this).text(); 
+            // console.log("p".red, p)
+            // // var articles = $(".news-title").text()
+            // let articles = $('div', this).hasClass('news-title');
+            // console.log("articles".red, articles)
 
-                // create an object with info and push it to an array 
+            // create an object with info and push it to an array 
 
 
             // $("#block-views-story-id-single-story-block-1").each(function (i, item) {
