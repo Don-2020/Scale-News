@@ -18,19 +18,27 @@ export default class app extends React.Component {
   state = {
     showModal: false,
     showModalLogin: false,
-    news:[]
+    news:[],
+    topic:[]
   }
 
   componentDidMount(){
 
     // <div id="block-views-story-id-single-story-block"></div>
    // API call to the scrape route then update the state
-   axios.get("api/scrape").then(function(data){
+   axios.get("/api/scrape").then(function(data){
 
     //this.setState({news: data.news})
     this.setState({news: data.news})
+
    })
    // this.setState({news: data.news})
+
+   axios.get("api/topics/scrape")
+    .then(function(data){
+      console.log("Somethign app.js: "+ data)
+      this.setState({topic: data.topic})
+   })
   }
 
   openModal = () => {
