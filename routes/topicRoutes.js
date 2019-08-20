@@ -15,7 +15,7 @@ colors.setTheme({
     error: 'red'
   });
 
-module.exports = function(app) {
+var topicScrape = function(app) {
 
 app.get("/api/topics/scrape", function(req,res){
     console.log("Topic route".info);
@@ -35,6 +35,15 @@ app.get("/api/topics/scrape", function(req,res){
             .attr("href");
             console.log("Topic".info,topic)
             console.log("Url".verbose, url)
+
+            var topicNeat = topic.trim();
+            var URL = "https://www.allsides.com/topics/" + url
+            var dataAdd = {
+                topicNeat,
+                URL
+            }
+
+            topicArray.push(dataAdd);
         })
         // $("#views-row-even").each(function (res, data) {
         //     console.log("************".info)
@@ -43,8 +52,14 @@ app.get("/api/topics/scrape", function(req,res){
         //     console.log("Topic".info, topic)
         // })
         // res.json({topic:topicArray})
+        console.log("Please Work".error, topicArray)
+        return topicArray
+       
     })
     
 })
 
 }
+
+// Export the function, so other files in our backend can use it
+module.exports = topicScrape;
