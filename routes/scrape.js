@@ -17,8 +17,8 @@ colors.setTheme({
 
 module.exports = function (app) {
 
-    app.get("/api/scrape", function (req, res) {
-        console.log("scrape route")
+    app.get("/api/scrape", function (req, response) {
+        console.log("scrape route".silly)
         //console.log(req)
         var newsArray = []
         // axios call to the website 
@@ -95,7 +95,10 @@ module.exports = function (app) {
 
             $('.view-id-story_id_single_child_articles', '#block-views-story-id-single-story-block').each(doOne);
             data.title = title;
-            console.log(data)
+            console.log("data: ".red, data)
+            newsArray.push(data)
+             data = {}
+            console.log("NEWSARRAY".red, newsArray)
 
             //  let title1 = $('.story-title', "#block-views-story-id-single-story-block-1").text()
             // console.log("***********".red)
@@ -114,8 +117,10 @@ module.exports = function (app) {
 
             $('.view-id-story_id_single_child_articles', '#block-views-story-id-single-story-block-1').each(doOne)
             data.title = title;
-            console.log(data)
-
+            console.log("data: ".red, data)
+            newsArray.push(data)
+            data = {}
+            console.log("NEWSARRAY".red, newsArray)
 
             // let src2 = $('.story-id-image').children().attr('src');
             // let title2 = $('.story-title', "#block-views-story-id-single-story-block-2").text()
@@ -137,8 +142,13 @@ module.exports = function (app) {
             section++;
             $('.view-id-story_id_single_child_articles', '#block-views-story-id-single-story-block-2').each(doOne)
             data.title = title;
-            console.log(data)
+            console.log("data: ".red, data)
+            newsArray.push(data)
 
+            console.log("NEWSARRAY".red, newsArray)
+
+            console.log("NEWSARRAY".silly, newsArray)
+            response.json({news: newsArray})
 
             // let mainStory = $("#block-views-story-id-single-story-block").children().text();
             // console.log('main story'.red, mainStory);
@@ -183,7 +193,7 @@ module.exports = function (app) {
         // cheerio to get the 3 block
 
         // foreach then find the info then update db (use a unique key to avoid duplicates (url))
-        //res.json(data)
+      
     })
 
 
