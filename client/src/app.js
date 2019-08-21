@@ -53,9 +53,11 @@ export default class app extends React.Component {
     this.setState({ showModalLogin: boolean });
   }
 
+
   render() {
     console.log('CURRENT STATE', this.state)
-
+    // let cHeading = this.state.news.map(article => <p>{article.title}</p>);
+      
     return (
       <div>
         <Router>
@@ -69,13 +71,9 @@ export default class app extends React.Component {
                 <Col size="12">
             
                   <Carousel>
-                    {this.state.news.map(item => (                      
                     <ControlledCarousel
-                      key = {item.id}
-                      title = {item.title}
-                    />))
-                    }
-                    
+                        news={this.state.news}
+                    />
                   </Carousel>
                 </Col>
               </Row>

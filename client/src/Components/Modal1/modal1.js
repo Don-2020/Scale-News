@@ -1,5 +1,6 @@
 import React from "react";
 import {Modal, Button} from "react-bootstrap";
+import {Form} from "react-bootstrap";
 
 function ModalLogin(props) {
     return (
@@ -9,19 +10,32 @@ function ModalLogin(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+       <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
-          </Modal.Title>
+          Already have an account? Log in:</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Centered Modal</h4>
-          <p>
-            111111.
-          </p>
+          
+    
+          <Form>
+  <Form.Group controlId="formBasicEmail">
+    <Form.Label>Email address</Form.Label>
+    <Form.Control type="email" placeholder="Enter email" required/>
+  </Form.Group>
+
+  <Form.Group controlId="formBasicPassword">
+    <Form.Label>Password</Form.Label>
+    <Form.Control type="password" placeholder="Password" />
+  </Form.Group>
+
+      
+     
+</Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+        <Button variant="primary" type="submit">
+   Log In
+  </Button>
         </Modal.Footer>
       </Modal>
     );
