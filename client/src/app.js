@@ -18,8 +18,7 @@ export default class app extends React.Component {
   state = {
     showModal: false,
     showModalLogin: false,
-    news:[],
-    topic:[]
+    news:[]
   }
 
   componentDidMount(){
@@ -34,11 +33,7 @@ export default class app extends React.Component {
    })
    // this.setState({news: data.news})
 
-   axios.get("api/topics/scrape")
-    .then(function(data){
-      console.log("Somethign app.js: "+ data)
-      this.setState({topic: data.topic})
-   })
+  
   }
 
   openModal = () => {

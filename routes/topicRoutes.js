@@ -36,10 +36,10 @@ app.get("/api/topics/scrape", function(req,res){
             console.log("Topic".info,topic)
             console.log("Url".verbose, url)
 
-            var topicNeat = topic.trim();
+            var Topic= topic.trim();
             var URL = "https://www.allsides.com/topics/" + url
             var dataAdd = {
-                topicNeat,
+                Topic,
                 URL
             }
 
