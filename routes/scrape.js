@@ -17,28 +17,15 @@ colors.setTheme({
 
 module.exports = function (app) {
 
-    app.get("/api/scrape", function (req, res) {
-        console.log("scrape route")
+    app.get("/api/scrape", function (req, response) {
+        console.log("scrape route".silly)
         //console.log(req)
         var newsArray = []
         // axios call to the website 
-        axios.get("https://www.allsides.com/unbiased-balanced-news").then(function (res) {
-
+       axios
+        .get("https://www.allsides.com/unbiased-balanced-news")
+        .then(function (res) {
             var $ = cheerio.load(res.data)
-
-            // $("#block-views-story-id-single-story-block").each(function (i, item) {
-            //     console.log("***********".red)
-            //     // console.log(item)
-            //     var title = $(".story-title").text()
-            //     console.log("TITLE".red, title)
-            //     var p = $("p", this).text(); 
-            //     console.log("p".red, p)
-            //     // var articles = $(".news-title").text()
-
-            //     // create an object with info and push it to an array 
-
-            // });
-
 
             // TPDO: create an object with info and push it to an array 
             let title = $('.story-title', "#block-views-story-id-single-story-block").text()
@@ -95,15 +82,11 @@ module.exports = function (app) {
 
             $('.view-id-story_id_single_child_articles', '#block-views-story-id-single-story-block').each(doOne);
             data.title = title;
-            console.log(data)
+            console.log("data: ".red, data)
+            newsArray.push(data)
+             data = {}
+            console.log("NEWSARRAY".red, newsArray)
 
-            //  let title1 = $('.story-title', "#block-views-story-id-single-story-block-1").text()
-            // console.log("***********".red)
-            // console.log("TITLE".red, title1)
-            // let p1 = $("p", "#block-views-story-id-single-story-block-1").text();
-            // console.log("p".red, p1)
-
-            // TPDO: create an object with info and push it to an array 
 
             // just to het 3 sub articles
             console.log('========== START HERE ========')
@@ -114,19 +97,10 @@ module.exports = function (app) {
 
             $('.view-id-story_id_single_child_articles', '#block-views-story-id-single-story-block-1').each(doOne)
             data.title = title;
-            console.log(data)
-
-
-            // let src2 = $('.story-id-image').children().attr('src');
-            // let title2 = $('.story-title', "#block-views-story-id-single-story-block-2").text()
-            // console.log("***********".red)
-            // console.log("src".red, src2)
-            // console.log("TITLE".red, title2)
-            // let p2 = $("p", "#block-views-story-id-single-story-block-2").text();
-            // console.log("p".red, p2)
-
-            // // TPDO: create an object with info and push it to an array 
-
+            console.log("data: ".red, data)
+            newsArray.push(data)
+            data = {}
+            console.log("NEWSARRAY".red, newsArray)
 
 
             // just to het 3 sub articles
@@ -137,53 +111,17 @@ module.exports = function (app) {
             section++;
             $('.view-id-story_id_single_child_articles', '#block-views-story-id-single-story-block-2').each(doOne)
             data.title = title;
-            console.log(data)
+            console.log("data: ".red, data)
+            newsArray.push(data)
+
+            console.log("NEWSARRAY".red, newsArray)
+
+            console.log("NEWSARRAY".silly, newsArray)
+            response.json({news: newsArray})
 
 
-            // let mainStory = $("#block-views-story-id-single-story-block").children().text();
-            // console.log('main story'.red, mainStory);
-            // let mainStory = $("#block-views-story-id-single-story-block").contents().text().trim();
-            // console.log('>>>>>>>>>'.red, mainStory);
-
-            // let title =$("#block-views-story-id-single-story-block").children('.story-title').text()
-            // console.log("title".red, title)
-
-            // console.log("***********".red)
-            // console.log(item)
-            // var title = $(".story-title").text()
-            // console.log("TITLE".red, title)
-            // var p = $("p", this).text(); 
-            // console.log("p".red, p)
-            // // var articles = $(".news-title").text()
-            // let articles = $('div', this).hasClass('news-title');
-            // console.log("articles".red, articles)
-
-            // create an object with info and push it to an array 
-
-
-            // $("#block-views-story-id-single-story-block-1").each(function (i, item) {
-            //     console.log("***********".red)
-            //     console.log(item)
-            //     var title = $(".story-title").text()
-            //     console.log("TITLE".red, title)
-            //     // create an object with info and push it to an array 
-            // })
-            // $("#block-views-story-id-single-story-block-2").each(function (i, item) {
-            //     console.log("***********".red)
-            //     console.log(item)
-            //     var title = $(".story-title").text()
-            //     console.log("TITLE".red, title)
-            //     // create an object with info and push it to an array 
-            // })
-            // if you want you can insert the info in the DB
-            // res.json({news: newsArray})
-
-        }
-        )
-        // cheerio to get the 3 block
-
-        // foreach then find the info then update db (use a unique key to avoid duplicates (url))
-        //res.json(data)
+        })
+        
     })
 
 
