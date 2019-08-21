@@ -36,6 +36,8 @@ export default class app extends React.Component {
     })
    })
    // this.setState({news: data.news})
+
+  
   }
 
   openModal = () => {
