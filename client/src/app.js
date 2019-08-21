@@ -18,17 +18,19 @@ export default class app extends React.Component {
   state = {
     showModal: false,
     showModalLogin: false,
-    news:[]
+    news: []
   }
 
   componentDidMount(){
-    console.log("componenet mounted")
+    console.log("componenet mounted");
     // <div id="block-views-story-id-single-story-block"></div>
    // API call to the scrape route then update the state
-   axios.get("api/scrape").then(function(res){
-     console.log("back from the scrape")
-    console.log(res.data.news)
+   axios.get("api/scrape").then((res) => {
+     console.log("back from the scrape", res.data.news)
+    console.log(typeof res.data.news);
+    
     //this.setState({news: data.news})
+    console.log(this);
     this.setState({
       news: res.data.news
     })
@@ -52,6 +54,8 @@ export default class app extends React.Component {
   }
 
   render() {
+    console.log('CURRENT STATE', this.state)
+
     return (
       <div>
         <Router>
