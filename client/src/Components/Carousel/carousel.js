@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from 'react-bootstrap/Carousel'
-
+import Button from 'react-bootstrap/Button'
 
 function ControlledCarousel(props) {
   console.log("props", props.news);
@@ -18,7 +18,15 @@ function ControlledCarousel(props) {
           <Carousel.Caption>
             <h3>{article.title}</h3>
             <p>{article.paragraph}</p>
-            <p>{article.other}</p>
+            {/* <p>{article.other}</p> */}
+
+            {article.other.map (opinion => {
+              return <Button variant="info">{opinion}</Button>
+
+            })
+            
+            }
+
 
           </Carousel.Caption>
         </Carousel.Item>
