@@ -29,7 +29,7 @@ module.exports = function (app) {
 
                 // TPDO: create an object with info and push it to an array 
                 let title = $('.story-title', "#block-views-story-id-single-story-block").text()
-                console.log("TITLE".red, title)
+                // console.log("TITLE".red, title)
 
                 let section = 0;
                 let data = {
@@ -60,7 +60,7 @@ module.exports = function (app) {
                         newString = '';
                     }
                     // console.log('newString'.silly, subArticles);
-                    let a = subArticles.map(cv => cv.trim()
+                    let povArticles = subArticles.map(cv => cv.trim()
                         .replace('                   ', '')
                         .replace('                   ', '')
                         .replace('                   ', '')
@@ -73,67 +73,76 @@ module.exports = function (app) {
                         data.image = src1;
                     }
                     ///// here
-                    data.other = a;
-
-                    let opinionArray = a.map(element => {
+                    
+                    // let povArray = []
+                    let povArray = povArticles.map(element => {
+                        
                         let obj = {};
 
                         let splitSource = element.split('     ');
-                        let ssource = splitSource.pop();
+                        let ssource = splitSource.pop().trim();
                         splitSource = splitSource[0].split(' ');
-                        let spov = splitSource.shift(); // ['Center','hello','my','name'...]
-                        let stagline = splitSource.join(' ');
+                        let spov = splitSource.shift().trim(); // ['Center','hello','my','name'...]
+                        let stagline = splitSource.join(' ').trim();
 
                         obj.source = ssource;
                         obj.pov = spov;
                         obj.tagline = stagline;
+                        
+                        console.log(obj);
+                        // povs.push(obj);
                         return obj;
 
                     })
-                    console.log("I am opinion".red, opinionArray);
+
+                    // console.log("I am opinion".red, povArray);
+
+                    data.other = povArray;
+
+                    
                 }
 
 
                 // just to het 3 sub articles
-                console.log('========== START HERE ========')
+                // console.log('========== START HERE ========')
 
                 $('.view-id-story_id_single_child_articles', '#block-views-story-id-single-story-block').each(doOne);
                 data.title = title;
-                console.log("data: ".red, data)
+                // console.log("data: ".red, data)
                 newsArray.push(data)
                 data = {}
-                console.log("NEWSARRAY".red, newsArray)
+                // console.log("NEWSARRAY".red, newsArray)
 
 
                 // just to het 3 sub articles
-                console.log('========== START HERE ========')
+                // console.log('========== START HERE ========')
                 title = $('.story-title', "#block-views-story-id-single-story-block-1").text()
-                console.log("TITLE".red, title)
+                // console.log("TITLE".red, title)
 
                 section++;
 
                 $('.view-id-story_id_single_child_articles', '#block-views-story-id-single-story-block-1').each(doOne)
                 data.title = title;
-                console.log("data: ".red, data)
+                // console.log("data: ".red, data)
                 newsArray.push(data)
                 data = {}
-                console.log("NEWSARRAY".red, newsArray)
+                // console.log("NEWSARRAY".red, newsArray)
 
 
                 // just to het 3 sub articles
-                console.log('========== START HERE ========')
+                // console.log('========== START HERE ========')
                 title = $('.story-title', "#block-views-story-id-single-story-block-2").text()
-                console.log("TITLE".red, title)
+                // console.log("TITLE".red, title)
 
                 section++;
                 $('.view-id-story_id_single_child_articles', '#block-views-story-id-single-story-block-2').each(doOne)
                 data.title = title;
-                console.log("data: ".red, data)
+                // console.log("data: ".red, data)
                 newsArray.push(data)
 
-                console.log("NEWSARRAY".red, newsArray)
+                // console.log("NEWSARRAY".red, newsArray)
 
-                console.log("NEWSARRAY".silly, newsArray)
+                // console.log("NEWSARRAY".silly, newsArray)
                 response.json({ news: newsArray })
 
 

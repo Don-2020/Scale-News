@@ -33,7 +33,7 @@ function ModalLogin(props) {
 </Form>
         </Modal.Body>
         <Modal.Footer>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" onClick={props.onHide}>
    Log In
   </Button>
         </Modal.Footer>

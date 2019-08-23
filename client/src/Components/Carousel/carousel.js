@@ -3,7 +3,7 @@ import Carousel from 'react-bootstrap/Carousel'
 import Button from 'react-bootstrap/Button'
 
 function ControlledCarousel(props) {
-  console.log("props", props.news);
+  console.log(">>>>>>>", props);
   
   return ( <>
     <Carousel>
@@ -20,8 +20,8 @@ function ControlledCarousel(props) {
             <p>{article.paragraph}</p>
             {/* <p>{article.other}</p> */}
 
-            {article.other.map (opinion => {
-              return <Button variant="info">{opinion}</Button>
+            {article.other.map(opinion => {
+              return <Button variant="info">{opinion.pov}</Button>
 
             })
             
