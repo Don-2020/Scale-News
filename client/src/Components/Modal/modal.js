@@ -17,7 +17,7 @@ function MyVerticallyCenteredModal(props) {
         <Modal.Body>
           
     
-          <Form>
+          <Form onSubmit={props.redirect}>
   <Form.Group controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>
     <Form.Control type="email" placeholder="Enter email" required/>
@@ -40,6 +40,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Body>
         <Modal.Footer>
         <Button variant="primary" type="submit">
+          {/* If clicked then submit info to database and open topic page */}
     Sign Up
   </Button>
         </Modal.Footer>

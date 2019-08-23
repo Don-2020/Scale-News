@@ -31,22 +31,19 @@ class TopicPage extends React.Component {
     // Then map over topics array and create a button for each element in your array (i.e. a button with topicNeat and URL) which are sent as props to each button
     render() {
         return (
-            <div><h1>THIS IS WORKING</h1></div>
-            // <div className="container">
-            //     <div className="Jumbotron">
-            //         <h1>Topic Choices</h1>
-            //         <h3>Select up to 1 to view</h3>
-            //     </div>
-            //     {this.state.topics.map(topic => (
-            //         <Button
-            //             name={topic.Topic}
-            //             link={topic.URL}
-            //         />
-            //     ))}
-            //     <Button
-
-            //     />
-            // </div>
+            // <div><h1>THIS IS WORKING</h1></div>
+            <div className="container">
+                <div className="Jumbotron">
+                    <h1>Topic Choices</h1>
+                    <h3>Select up to 1 to view</h3>
+                </div>
+                {/* {this.state.topics.map(topic => (
+                    <Button
+                        name={topic.Topic}
+                        link={topic.URL}
+                    />
+                ))} */}
+            </div>
         )
     }
 }

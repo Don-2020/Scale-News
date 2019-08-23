@@ -2,6 +2,9 @@ import React from "react";
 import {Modal, Button} from "react-bootstrap";
 import {Form} from "react-bootstrap";
 
+
+
+
 function ModalLogin(props) {
     return (
       <Modal
@@ -33,7 +36,8 @@ function ModalLogin(props) {
 </Form>
         </Modal.Body>
         <Modal.Footer>
-        <Button variant="primary" type="submit">
+        <Button onClick={props.redirect} variant="primary" type="submit">
+          {/* If button is clicked, then validate login info and take user to topic page */}
    Log In
   </Button>
         </Modal.Footer>
