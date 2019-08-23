@@ -55,9 +55,11 @@ export default class app extends React.Component {
     this.setState({ showModalLogin: boolean });
   }
 
+
   render() {
     console.log('CURRENT STATE', this.state)
-
+    // let cHeading = this.state.news.map(article => <p>{article.title}</p>);
+      
     return (
       <div>
         <Router>
@@ -71,13 +73,9 @@ export default class app extends React.Component {
                 <Col size="12">
             
                   <Carousel>
-                    {this.state.news.map(item => (                      
                     <ControlledCarousel
-                      key = {item.id}
-                      title = {item.title}
-                    />))
-                    }
-                    
+                        news={this.state.news}
+                    />
                   </Carousel>
                 </Col>
               </Row>
@@ -104,6 +102,7 @@ export default class app extends React.Component {
                   <Button onClick={this.openModalLogin} style={style.loginbtn} variant="secondary" size="lg" block>
                     Log In</Button>
                 </div>
+                
 
                 {/* <Col size="6">
              <Button variant="outline-danger" style={style.registerbtn}>Danger</Button>
@@ -117,6 +116,7 @@ export default class app extends React.Component {
             </Container>
           </Switch>
         </Router>
+        
 
         {/* footer */}
         {/* <Row>
@@ -193,18 +193,18 @@ export default class app extends React.Component {
 //         </Switch>
 //       </Router>
 
-//       {/* footer */}
-//       {/* <Row>
-//         <Col size="4">
-//         <h1>test1</h1>
-//         </Col>
-//         <Col size="4">
-//         <h1>test1</h1>
-//         </Col>
-//         <Col size="4">
-//         <h1>test1</h1>
-//         </Col>
-//       </Row> */}
+      {/* footer */}
+      // {/* <Row>
+      //   <Col size="4">
+      //   <h1>test1</h1>
+      //   </Col>
+      //   <Col size="4">
+      //   <h1>test1</h1>
+      //   </Col>
+      //   <Col size="4">
+      //   <h1>test1</h1>
+      //   </Col>
+      // </Row> */}
 
 //     </div>
 //   );
