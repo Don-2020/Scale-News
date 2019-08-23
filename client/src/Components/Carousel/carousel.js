@@ -1,6 +1,8 @@
 import React from "react";
-import Carousel from 'react-bootstrap/Carousel'
-import Button from 'react-bootstrap/Button'
+import Carousel from 'react-bootstrap/Carousel';
+import Button from 'react-bootstrap/Button';
+import OpinionBtn from '../Button/OpinionBtn';
+import "./carousel.css";
 
 function ControlledCarousel(props) {
   console.log(">>>>>>>", props);
@@ -21,7 +23,22 @@ function ControlledCarousel(props) {
             {/* <p>{article.other}</p> */}
 
             {article.other.map(opinion => {
-              return <Button variant="info">{opinion.pov}</Button>
+
+              let style = {
+                backgroundColor: ''
+              };
+              
+              if (opinion.pov === 'Right') {
+                style.backgroundColor = 'red';
+              } else if (opinion.pov === 'Center') {
+                style.backgroundColor = 'purple';
+              } else {
+                style.backgroundColor = 'blue';
+              }
+
+              return <OpinionBtn id="1" variant="info" style={style}>{opinion.pov}</OpinionBtn>
+            
+
 
             })
             

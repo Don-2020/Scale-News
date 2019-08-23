@@ -11,6 +11,8 @@ import MyVerticallyCenteredModal from "./Components/Modal/modal"
 import ModalLogin from "./Components/Modal1/modal1"
 import axios from "axios"
 import Carousel from 'react-bootstrap/Carousel'
+import TopicPage from './pages/TopicPage'
+import home from './pages/Home'
 
 // TO DO: =================================================
 // Will need to consider when and where topics page will be loaded. Currently state contains full topicsArray when App component mounts. When ready, you will pass state of topicsArray as prop to TopicPage component.
@@ -19,7 +21,7 @@ import Carousel from 'react-bootstrap/Carousel'
 // <TopicPage topics={this.state.topicsArray}/>
 // ========================================================
 
-export default class app extends React.Component {
+export default class App extends React.Component {
   state = {
     showModal: false,
     showModalLogin: false,
@@ -83,6 +85,8 @@ export default class app extends React.Component {
         <Router>
           <Wtf />
           <Switch>
+            <Route exact path="/Home" component={home}/>
+            <Route exact paht="/Topics" component={TopicPage}/>
             <Container >
 
               <Row >
@@ -111,23 +115,14 @@ export default class app extends React.Component {
                 <ModalLogin show={this.state.showModalLogin} onHide={() => this.setModalLoginShow(false)} />
 
                 <div style={{ width: '100%', margin: '0px 30px', marginLeft: '10%' }} >
-                  <Button onClick={this.openModal} variant="danger" size="lg" block>
+                  <Button style={{}} onClick={this.openModal} variant="danger" size="lg" block>
                     Sign Up</Button>
 
 
-                  <Button onClick={this.openModalLogin} style={style.loginbtn} variant="secondary" size="lg" block>
+                  <Button id="logIn" onClick={this.openModalLogin} style={style.loginbtn} variant="secondary" size="lg" block>
                     Log In</Button>
                 </div>
 
-
-                {/* <Col size="6">
-             <Button variant="outline-danger" style={style.registerbtn}>Danger</Button>
-            
-             </Col>
-            
-             <Col size="6">
-             <Button className="" variant="danger">Danger</Button>
-           </Col> */}
               </Row>
 
             </Container>
