@@ -12,32 +12,48 @@ import ModalLogin from "./Components/Modal1/modal1"
 import axios from "axios"
 import Carousel from 'react-bootstrap/Carousel'
 
+// TO DO: =================================================
+// Will need to consider when and where topics page will be loaded. Currently state contains full topicsArray when App component mounts. When ready, you will pass state of topicsArray as prop to TopicPage component.
 
+// import TopicPage from '../src/pages/TopicPage'
+// <TopicPage topics={this.state.topicsArray}/>
+// ========================================================
 
 export default class app extends React.Component {
   state = {
     showModal: false,
     showModalLogin: false,
-    news: []
+    news: [],
+    topicsArray: []
   }
 
   componentDidMount(){
     console.log("componenet mounted");
     // <div id="block-views-story-id-single-story-block"></div>
    // API call to the scrape route then update the state
-   axios.get("api/scrape").then((res) => {
-     console.log("back from the scrape", res.data.news)
-    console.log(typeof res.data.news);
-    
-    //this.setState({news: data.news})
-    console.log(this);
-    this.setState({
-      news: res.data.news
-    })
+   axios.get("api/scrape")
+    .then( res => {
+
+      console.log("back from the scrape")
+      console.log(res.data.news);
+      console.log(this);
+
+      this.setState({
+        news: res.data.news
+      });
+
    })
-   // this.setState({news: data.news})
 
   
+   axios.get("/api/topics/scrape")
+    .then( res => {
+      console.log('THIS IS WORKING****************');
+      console.log(res.data.topicsArray);
+      this.setState({
+        topicsArray: res.data.topicsArray
+      });
+   })
+
   }
 
   openModal = () => {
@@ -59,7 +75,9 @@ export default class app extends React.Component {
     console.log('CURRENT STATE', this.state)
 
     return (
+      
       <div>
+        
         <Router>
           <Wtf />
           <Switch>
@@ -67,6 +85,7 @@ export default class app extends React.Component {
             {/* <Route exact path="/topics" component={Topics} /> */}
             {/* routes */}
             <Container >
+            
               <Row >
                 <Col size="12">
             
@@ -114,7 +133,8 @@ export default class app extends React.Component {
              <Button className="" variant="danger">Danger</Button>
            </Col> */}
               </Row>
-            </Container>
+              
+            </Container>  
           </Switch>
         </Router>
 

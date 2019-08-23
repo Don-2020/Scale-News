@@ -13,53 +13,50 @@ colors.setTheme({
     warn: 'yellow',
     debug: 'blue',
     error: 'red'
-  });
+});
 
-var topicScrape = function(app) {
+module.exports = function (app) {
 
-app.get("/api/topics/scrape", function(req,res){
-    console.log("Topic route".info);
-    // console.log("Topic routes: ", req)
-    var topicArray = []
-    // axios call to website
-    axios.get("https://www.allsides.com/topics-issues").then(function(res) {
+    app.get("/api/topics/scrape", function (req, response) {
 
-        var $ = cheerio.load(res.data)
-// console.log("somethign".error, res.data)
-        $(".views-row").each(function (res, data) {
-            console.log("**********".info)
-            console.log(res)
-            var topic = $("a", this).text()
-            var url = $(this)
-            .find("a")
-            .attr("href");
-            console.log("Topic".info,topic)
-            console.log("Url".verbose, url)
+        console.log("Topic route".info);
+        
+        var topicsArray = []
+        // axios call to website
+        axios
+        .get("https://www.allsides.com/topics-issues")
+        .then( function(res) {
 
-            var Topic= topic.trim();
-            var URL = "https://www.allsides.com/topics/" + url
-            var dataAdd = {
-                Topic,
-                URL
-            }
+            var $ = cheerio.load(res.data);
 
-            topicArray.push(dataAdd);
+            $(".views-row").each(function (res, data) {
+                console.log("**********".info)
+                console.log(res)
+                
+                var topic = $("a", this).text()
+                
+                var url = $(this)
+                    .find("a")
+                    .attr("href");
+                console.log("Topic".info, topic)
+                console.log("Url".verbose, url)
+
+                var Topic = topic.trim();
+                var URL = "https://www.allsides.com/topics/" + url
+                var dataAdd = {
+                    Topic,
+                    URL
+                }
+
+                topicsArray.push(dataAdd);
+            })
+           
+            response.json({topicsArray}) // [{}, {}]
+
         })
-        // $("#views-row-even").each(function (res, data) {
-        //     console.log("************".info)
-        //     console.log(data)
-        //     var topic = $("a").text()
-        //     console.log("Topic".info, topic)
-        // })
-        // res.json({topic:topicArray})
-        console.log("Please Work".error, topicArray)
-        return topicArray
-       
+
     })
-    
-})
 
 }
 
 // Export the function, so other files in our backend can use it
-module.exports = topicScrape;
