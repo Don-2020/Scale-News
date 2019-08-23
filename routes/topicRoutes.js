@@ -30,16 +30,16 @@ module.exports = function (app) {
             var $ = cheerio.load(res.data);
 
             $(".views-row").each(function (res, data) {
-                console.log("**********".info)
-                console.log(res)
+                // console.log("**********".info)
+                // console.log(res)
                 
                 var topic = $("a", this).text()
                 
                 var url = $(this)
                     .find("a")
                     .attr("href");
-                console.log("Topic".info, topic)
-                console.log("Url".verbose, url)
+                // console.log("Topic".info, topic)
+                // console.log("Url".verbose, url)
 
                 var Topic = topic.trim();
                 var URL = "https://www.allsides.com/topics/" + url

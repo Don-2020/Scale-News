@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import {Modal, Button} from "react-bootstrap";
 import {Form} from "react-bootstrap";
 
 function MyVerticallyCenteredModal(props) {
-    return (
+
+  return (
       <Modal
         {...props}
         size="lg"
@@ -39,7 +40,7 @@ function MyVerticallyCenteredModal(props) {
 </Form>
         </Modal.Body>
         <Modal.Footer>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" onClick={props.onHide}>
     Sign Up
   </Button>
         </Modal.Footer>

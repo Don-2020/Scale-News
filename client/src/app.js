@@ -27,32 +27,32 @@ export default class app extends React.Component {
     topicsArray: []
   }
 
-  componentDidMount(){
+  componentDidMount() {
     console.log("componenet mounted");
     // <div id="block-views-story-id-single-story-block"></div>
-   // API call to the scrape route then update the state
-   axios.get("api/scrape")
-    .then( res => {
+    // API call to the scrape route then update the state
+    axios.get("api/scrape")
+      .then(res => {
 
-      console.log("back from the scrape")
-      console.log(res.data.news);
-      console.log(this);
+        console.log("back from the scrape")
+        console.log(res.data.news);
+        console.log(this);
 
-      this.setState({
-        news: res.data.news
-      });
+        this.setState({
+          news: res.data.news
+        });
 
-   })
+      })
 
-  
-   axios.get("/api/topics/scrape")
-    .then( res => {
-      console.log('THIS IS WORKING****************');
-      console.log(res.data.topicsArray);
-      this.setState({
-        topicsArray: res.data.topicsArray
-      });
-   })
+
+    axios.get("/api/topics/scrape")
+      .then(res => {
+        console.log('THIS IS WORKING****************');
+        console.log(res.data.topicsArray);
+        this.setState({
+          topicsArray: res.data.topicsArray
+        });
+      })
 
   }
 
@@ -74,26 +74,23 @@ export default class app extends React.Component {
 
   render() {
     console.log('CURRENT STATE', this.state)
-    // let cHeading = this.state.news.map(article => <p>{article.title}</p>);
-      
+
+
     return (
-      
+
       <div>
-        
+
         <Router>
           <Wtf />
           <Switch>
-            {/* routes */}
-            {/* <Route exact path="/topics" component={Topics} /> */}
-            {/* routes */}
             <Container >
-            
+
               <Row >
                 <Col size="12">
-            
+
                   <Carousel>
-                    <ControlledCarousel
-                        news={this.state.news}
+                    <ControlledCarousel 
+                      news={this.state.news}
                     />
                   </Carousel>
                 </Col>
@@ -121,7 +118,7 @@ export default class app extends React.Component {
                   <Button onClick={this.openModalLogin} style={style.loginbtn} variant="secondary" size="lg" block>
                     Log In</Button>
                 </div>
-                
+
 
                 {/* <Col size="6">
              <Button variant="outline-danger" style={style.registerbtn}>Danger</Button>
@@ -132,103 +129,27 @@ export default class app extends React.Component {
              <Button className="" variant="danger">Danger</Button>
            </Col> */}
               </Row>
-              
-            </Container>  
+
+            </Container>
           </Switch>
         </Router>
-        
 
-        {/* footer */}
-        {/* <Row>
-         <Col size="4">
-         <h1>test1</h1>
-         </Col>
-         <Col size="4">
-         <h1>test1</h1>
-         </Col>
-         <Col size="4">
-         <h1>test1</h1>
-         </Col>
-       </Row> */}
-
+        <footer>
+          <row>
+            <Col size="4">
+              <h1 style={{ color: 'white' }}>h</h1>
+            </Col>
+            <Col size="4">
+              <h1 style={{ color: 'white' }}>e</h1>
+            </Col>
+            <Col size="4">
+            <h1 style={{ color: 'white' }}>llo</h1>
+            </Col>
+       </row> 
+       </footer>
+   
       </div>
-    )
-  }
-}
-
-
-//create grid here
-
-// function setModalShow(show) {
-
-// }
-// function App() {
-//   return (
-//     <div>
-
-//       <Router>
-//         <Wtf />
-//         <Switch>
-//           {/* routes */}
-//           {/* <Route exact path="/topics" component={Topics} /> */}
-//           {/* routes */}
-//           <Container >
-//             <Row >
-//               <Col size="12">
-//                 <ControlledCarousel />
-//               </Col>
-//             </Row>
-//             <Row>
-//               <Col size="12">
-//                 <h1 style={style.test1}>What’s black white and red all over? </h1>
-//               </Col>
-//             </Row>
-//             <Row>
-//               <Col size="12">
-//                 <h1 style={style.test2}>Your New(s) Media Habit</h1>
-//               </Col>
-//             </Row>
-//             <Row>
-//               <MyVerticallyCenteredModal show={this.state.showModal} onHide={() => setModalShow(false)} />
-
-//               <div style={{ width: '100%', margin: '0px 30px', marginLeft: '10%' }} >
-//                 <Button variant="danger" size="lg" block>
-//                   Sign Up
-//   </Button>
-//                 <Button style={style.loginbtn} variant="secondary" size="lg" block>
-//                   Log In
-//   </Button>
-//               </div>
-
-//               {/* <Col size="6">
-//             <Button variant="outline-danger" style={style.registerbtn}>Danger</Button>
-
-//             </Col>
-
-//             <Col size="6">
-//             <Button className="" variant="danger">Danger</Button>
-//           </Col> */}
-//             </Row>
-//           </Container>
-//         </Switch>
-//       </Router>
-
-      {/* footer */}
-      // {/* <Row>
-      //   <Col size="4">
-      //   <h1>test1</h1>
-      //   </Col>
-      //   <Col size="4">
-      //   <h1>test1</h1>
-      //   </Col>
-      //   <Col size="4">
-      //   <h1>test1</h1>
-      //   </Col>
-      // </Row> */}
-
-//     </div>
-//   );
-// }
-
-
-// export default App;
+        )
+      }
+    }
+    
