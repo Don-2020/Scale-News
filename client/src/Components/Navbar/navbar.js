@@ -18,8 +18,8 @@ function Wtf() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">Topics</Nav.Link> 
+                        <Nav.Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>Home</Nav.Link>
+                        <Nav.Link to="/Topic"className={window.location.pathname === "/Topic" ? "nav-link active" : "nav-link"}>Topics</Nav.Link> 
                         {/* <Link to="/topics">Topic</Link>
 
                         {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
