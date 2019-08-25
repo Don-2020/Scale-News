@@ -31,14 +31,14 @@ module.exports = function (app) {
 
             $(".views-row").each(function (res, data) {
                 // console.log("**********".info)
-                // console.log(res)
+                console.log(res)
                 
                 var topic = $("a", this).text()
                 
                 var url = $(this)
                     .find("a")
                     .attr("href");
-                // console.log("Topic".info, topic)
+                console.log("Topic".info, topic)
                 // console.log("Url".verbose, url)
 
                 var Topic = topic.trim();
