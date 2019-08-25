@@ -59,17 +59,22 @@ module.exports = function (app) {
                         subArticles.push(newString);
                         newString = '';
                     }
+                    // console.log('newString'.silly, subArticles);
                     let povArticles = subArticles.map(cv => cv.trim()
                         .replace('                   ', '')
                         .replace('                   ', '')
                         .replace('                   ', '')
                     )
+                    // console.log('RAINBOW'.silly, a);
                     let src1 = $('.story-id-image', this).children().attr('src');
+                    // console.log("src".red, src1)
                     data.paragraph = p;
                     if (src1) {
                         data.image = src1;
                     }
+                    ///// here
                     
+                    // let povArray = []
                     let povArray = povArticles.map(element => {
                         
                         let obj = {};
@@ -77,7 +82,7 @@ module.exports = function (app) {
                         let splitSource = element.split('     ');
                         let ssource = splitSource.pop().trim();
                         splitSource = splitSource[0].split(' ');
-                        let spov = splitSource.shift().trim();
+                        let spov = splitSource.shift().trim(); // ['Center','hello','my','name'...]
                         let stagline = splitSource.join(' ').trim();
 
                         obj.source = ssource;
@@ -85,34 +90,16 @@ module.exports = function (app) {
                         obj.tagline = stagline;
                         
                         console.log(obj);
+                        // povs.push(obj);
                         return obj;
 
                     })
 
-                    // rearrange so order is left, center, right
-                    const newPovArray = [];
-                    if (!newPovArray.length) {
-                        console.log('inside if 1')
-                        let [left] = povArray.filter(element => element.pov === 'Left');
-                        newPovArray.push(left);
-                    }
+                    // console.log("I am opinion".red, povArray);
 
-                    if (newPovArray.length === 1){
-                        console.log('inside if 2')
-                        let [center] = povArray.filter(element => element.pov === 'Center');
-                        newPovArray.push(center);
-                    }
+                    data.other = povArray;
 
-                    if (newPovArray.length === 2){
-                        console.log('inside if 3')
-                        let [right] = povArray.filter(element => element.pov === 'Right');
-                        newPovArray.push(right);
-                    }
                     
-                    console.log('NEW ARRAY'.silly, newPovArray);
-
-                    data.other = newPovArray;
-
                 }
 
 

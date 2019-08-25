@@ -19,7 +19,14 @@ const style = {
         textAlign: 'center',
     },
 
+    registerbtn: {
 
+    },
+
+    loginbtn: {
+        // width: '100%'
+
+    },
 
     
 

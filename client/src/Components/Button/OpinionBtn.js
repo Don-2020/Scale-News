@@ -1,17 +1,12 @@
 import React from "react";
 
 // Destructuring the type, className, children and onClick props, applying them to the button element
-function OpinionBtn({ type = "default", className, children, onClick, style }) {
-    console.log('BUTTON STYLE', style);
+function OpinionBtn({ type = "default", className, children, onClick }) {
   return (
-    <button onClick={onClick} className={["btn btn-lg", `btn-${type}`, className].join(" ")} style={style}>
+    <button onClick={onClick} className={["btn btn-lg", `btn-${type}`, className].join(" ")}>
       {children}
     </button>
   );
 }
 
 export default OpinionBtn;
-
-
-  
-//   ReactDOM.render(<div style={divStyle}>Hello World!</div>, mountNode);
