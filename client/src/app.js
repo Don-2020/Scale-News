@@ -11,8 +11,13 @@ import MyVerticallyCenteredModal from "./Components/Modal/modal"
 import ModalLogin from "./Components/Modal1/modal1"
 import axios from "axios"
 import Carousel from 'react-bootstrap/Carousel'
+<<<<<<< HEAD
 import { withRouter } from 'react-router-dom';
 import TopicPage from './pages/TopicPage'
+=======
+import TopicPage from './pages/TopicPage'
+import home from './pages/Home'
+>>>>>>> master
 
 // TO DO: =================================================
 // Will need to consider when and where topics page will be loaded. Currently state contains full topicsArray when App component mounts. When ready, you will pass state of topicsArray as prop to TopicPage component.
@@ -21,7 +26,7 @@ import TopicPage from './pages/TopicPage'
 // <TopicPage topics={this.state.topicsArray}/>
 // ========================================================
 
-export default class app extends React.Component {
+export default class App extends React.Component {
   state = {
     showModal: false,
     showModalLogin: false,
@@ -91,9 +96,14 @@ export default class app extends React.Component {
         <Router>
           <Wtf />
           <Switch>
+<<<<<<< HEAD
             {/* routes */}
             <Route exact path="/Topics" component={TopicPage} />
             {/* routes */}
+=======
+            <Route exact path="/Home" component={home}/>
+            <Route exact paht="/Topics" component={TopicPage}/>
+>>>>>>> master
             <Container >
 
               <Row >
@@ -122,23 +132,22 @@ export default class app extends React.Component {
                 <ModalLogin show={this.state.showModalLogin} onHide={() => this.setModalLoginShow(false)} />
 
                 <div style={{ width: '100%', margin: '0px 30px', marginLeft: '10%' }} >
+<<<<<<< HEAD
                   <Button onClick={this.openModal} redirect={this.redirecTotTopic} variant="danger" size="lg" block>
                     Sign Up</Button>
 
 
                   <Button onClick={this.openModalLogin} redirect={this.redirecTotTopic} style={style.loginbtn} variant="secondary" size="lg" block>
+=======
+                  <Button style={{}} onClick={this.openModal} variant="danger" size="lg" block>
+                    Sign Up</Button>
+
+
+                  <Button id="logIn" onClick={this.openModalLogin} style={style.loginbtn} variant="secondary" size="lg" block>
+>>>>>>> master
                     Log In</Button>
                 </div>
 
-
-                {/* <Col size="6">
-             <Button variant="outline-danger" style={style.registerbtn}>Danger</Button>
-            
-             </Col>
-            
-             <Col size="6">
-             <Button className="" variant="danger">Danger</Button>
-           </Col> */}
               </Row>
 
             </Container>
