@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Modal, Button} from "react-bootstrap";
 import {Form} from "react-bootstrap";
+import {Link} from "react-router-dom"
 
 function MyVerticallyCenteredModal(props) {
 
@@ -18,7 +19,7 @@ function MyVerticallyCenteredModal(props) {
         <Modal.Body>
           
     
-          <Form>
+          <Form onSubmit={props.redirect}>
   <Form.Group controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>
     <Form.Control type="email" placeholder="Enter email" required/>
@@ -40,9 +41,11 @@ function MyVerticallyCenteredModal(props) {
 </Form>
         </Modal.Body>
         <Modal.Footer>
+          <Link to="/Topics">
         <Button variant="primary" type="submit" onClick={props.onHide}>
     Sign Up
   </Button>
+  </Link>
         </Modal.Footer>
       </Modal>
     );

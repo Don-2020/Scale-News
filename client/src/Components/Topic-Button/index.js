@@ -1,13 +1,16 @@
 import React from "react";
+import {Link} from "react-router-dom"
 // import topicScrape from "topicRoutes";
 
 // Destructuring the type, className, children and onClick props, applying them to the button element
-function Button() {
+function Button(props) {
   return (
     <div className="button">
-      <Button onclick="location.href='props.URL'" variant="primary" size="lg">
-        {props.Topic}
+      <Link to={props.link}>
+      <Button  variant="primary" size="lg">
+        {props.name}
       </Button>
+      </Link>
     </div>
     // <span onClick={() => props.addArticles(prop.link)}className="scrape"></span>
 

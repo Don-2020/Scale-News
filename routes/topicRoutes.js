@@ -51,7 +51,7 @@ module.exports = function (app) {
                 topicsArray.push(dataAdd);
             })
            
-            response.json({topicsArray}) // [{}, {}]
+            response.json(topicsArray) // [{}, {}]
 
         })
 

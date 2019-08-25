@@ -11,6 +11,8 @@ import MyVerticallyCenteredModal from "./Components/Modal/modal"
 import ModalLogin from "./Components/Modal1/modal1"
 import axios from "axios"
 import Carousel from 'react-bootstrap/Carousel'
+import { withRouter } from 'react-router-dom';
+import TopicPage from './pages/TopicPage'
 
 // TO DO: =================================================
 // Will need to consider when and where topics page will be loaded. Currently state contains full topicsArray when App component mounts. When ready, you will pass state of topicsArray as prop to TopicPage component.
@@ -45,15 +47,21 @@ export default class app extends React.Component {
       })
 
 
-    axios.get("/api/topics/scrape")
-      .then(res => {
-        console.log('THIS IS WORKING****************');
-        console.log(res.data.topicsArray);
-        this.setState({
-          topicsArray: res.data.topicsArray
-        });
-      })
+    // axios.get("/api/topics/scrape")
+    //   .then(res => {
+    //     console.log('THIS IS WORKING****************');
+    //     console.log(res.data.topicsArray);
+    //     this.setState({
+    //       topicsArray: res.data.topicsArray
+    //     });
+    //   })
 
+  }
+
+  redirecTotTopic = ()=>{
+    console.log("CLICKED")
+    // this.props.history.push("/Topics")
+    window.location("/Topics")
   }
 
   openModal = () => {
@@ -83,6 +91,9 @@ export default class app extends React.Component {
         <Router>
           <Wtf />
           <Switch>
+            {/* routes */}
+            <Route exact path="/Topics" component={TopicPage} />
+            {/* routes */}
             <Container >
 
               <Row >
@@ -111,11 +122,11 @@ export default class app extends React.Component {
                 <ModalLogin show={this.state.showModalLogin} onHide={() => this.setModalLoginShow(false)} />
 
                 <div style={{ width: '100%', margin: '0px 30px', marginLeft: '10%' }} >
-                  <Button onClick={this.openModal} variant="danger" size="lg" block>
+                  <Button onClick={this.openModal} redirect={this.redirecTotTopic} variant="danger" size="lg" block>
                     Sign Up</Button>
 
 
-                  <Button onClick={this.openModalLogin} style={style.loginbtn} variant="secondary" size="lg" block>
+                  <Button onClick={this.openModalLogin} redirect={this.redirecTotTopic} style={style.loginbtn} variant="secondary" size="lg" block>
                     Log In</Button>
                 </div>
 
