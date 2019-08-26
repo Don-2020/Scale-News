@@ -12,25 +12,42 @@ class TopicPage extends React.Component {
             isReady: false,
             error: null
         }
+
+        console.log('INSIDE TOPIC PAGE COMPONENT: PROPS', this.props);
+        // document.body.append("<button type='button'>Click Me!</button>");
+
+        this.popup = document.createElement("button");
+        document.body.appendChild(this.popup);
         
-        console.log('INSIDE TOPIC PAGE COMPONENT: PROPS', this.props) 
-        // -> { icon: 'home', … }
-        // include state here that has property:value topics: []
+        // var g = document.createElement('div');
+        // g.setAttribute("id", "list");
+        // document.body.appendChild(g);
+        // let buttons =""
+        // for(var x=0; x < topics.length; x++){
+        //     let tempButton = '<a href="{link}">{text}</a>';
+        //     buttons+= tempButton.replace('{link}',topics[x].url).replace("",topics[x].Topic);
+        // }
         
+        // document.getElementById().innerHTML = buttons;
+        // document.getElementById("List").innerHTML = '<button type="button">Click Me!</button>';
+        
+
     }
-    
+
 
     // method componentDidMount in which you perform your scrape (res)
     componentDidMount() {
         axios.get("api/topics/scrape")
             .then((result) => {
-                this.setState({topics: result.data,
-                isReady: true})
+                this.setState({
+                    topics: result.data,
+                    isReady: true
+                })
 
                 // once topicArray obtained... setState({topics: res.data})
                 // console.log(topics)
             }).catch(error => {
-                if(error) this.setState({error})
+                if (error) this.setState({ error })
             })
     }
 
@@ -40,8 +57,9 @@ class TopicPage extends React.Component {
 
     // Then map over topics array and create a button for each element in your array (i.e. a button with topicNeat and URL) which are sent as props to each button
     render() {
-        const {topics} = this.state;
+        const { topics } = this.state;
         console.log(topics)
+        console.log("Topics length:", topics.length)
         return (
             // <div><h1>THIS IS WORKING</h1></div>
             <div className="container">
@@ -49,15 +67,9 @@ class TopicPage extends React.Component {
                     <h1>Topic Choices</h1>
                     <h3>Select up to 1 to view</h3>
                 </div>
-                {topics.map(topic => (
-                    <Button
-                    key = {topic.Topic}
-                    id = {topic.Topic}
-                        name={topic.Topic}
-                        link={topic.URL}
-                    />
-                ))}
-                
+              <span id="list">
+                  
+              </span>
             </div>
         )
     }

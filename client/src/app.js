@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import style from './style'
 import Button from "react-bootstrap/Button";
 import MyVerticallyCenteredModal from "./Components/Modal/modal"
-// import Topics from './pages/Topic';
+import TopicPage from './pages/TopicPage';
 import ModalLogin from "./Components/Modal1/modal1"
 import axios from "axios"
 import Carousel from 'react-bootstrap/Carousel'
@@ -89,6 +89,7 @@ export default class app extends React.Component {
         <Router>
           <Wtf />
           <Switch>
+          <Route exact path="/Topics" component={TopicPage}/>
             <Container >
 
               <Row >
@@ -117,19 +118,11 @@ export default class app extends React.Component {
                 <ModalLogin show={this.state.showModalLogin} onHide={() => this.setModalLoginShow(false)} />
 
                 <div style={{ width: '100%', margin: '0px 30px', marginLeft: '10%' }} >
-<<<<<<< HEAD
                   <Button onClick={this.openModal} redirect={this.redirecTotTopic} variant="danger" size="lg" block>
                     Sign Up</Button>
 
 
                   <Button onClick={this.openModalLogin} redirect={this.redirecTotTopic} style={style.loginbtn} variant="secondary" size="lg" block>
-=======
-                  <Button onClick={this.openModal} variant="danger" size="lg" block>
-                    Sign Up</Button>
-
-
-                  <Button onClick={this.openModalLogin} style={style.loginbtn} variant="secondary" size="lg" block>
->>>>>>> parent of 47aba87... fixed buttons on carousel
                     Log In</Button>
                 </div>
 

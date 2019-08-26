@@ -1,22 +1,22 @@
-import React from "react"
+// import React from "react"
 
 
-class Topic extends Component {
-    state = {
-        search: "",
-        topics: [],
-        results: [],
-        error: "",
-    };
+// class Topic extends Component {
+//     state = {
+//         search: "",
+//         topics: [],
+//         results: [],
+//         error: "",
+//     };
 
-    componentDidMount() {
-        handleInputChange = event => {
-            this.setState({ search: event.target.value })
-        };
+//     componentDidMount() {
+//         handleInputChange = event => {
+//             this.setState({ search: event.target.value })
+//         };
 
-        handleFormSubmit = event => {
-            event.preventDefault();
+//         handleFormSubmit = event => {
+//             event.preventDefault();
             
-        }
-    }
-}
+//         }
+//     }
+// }
