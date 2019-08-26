@@ -67,9 +67,12 @@ class TopicPage extends React.Component {
                     <h1>Topic Choices</h1>
                     <h3>Select up to 1 to view</h3>
                 </div>
-              <span id="list">
-                  
-              </span>
+                {this.state.topics.map(topic => (
+                    <Button
+                        name={topic.Topic}
+                        // link={topic.URL}
+                    />
+                ))}
             </div>
         )
     }

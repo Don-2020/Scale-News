@@ -29,7 +29,7 @@ module.exports = function (app) {
 
             var $ = cheerio.load(res.data);
 
-            $(".views-row.views-row-16.views-row-even").each(function (res, data) {
+            $(".views-row").each(function (res, data) {
                 // console.log("**********".info)
                 console.log(res)
                 
