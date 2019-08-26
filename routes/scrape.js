@@ -31,6 +31,8 @@ module.exports = function (app) {
                 let title = $('.story-title', "#block-views-story-id-single-story-block").text()
                 // console.log("TITLE".red, title)
 
+                let url = "https://www.allsides.com" + ($('.field-content', "#block-views-story-id-single-story-block").find("a").attr("href"))
+                console.log("URL".red, url)
                 let section = 0;
                 let data = {
 
@@ -69,9 +71,9 @@ module.exports = function (app) {
                     if (src1) {
                         data.image = src1;
                     }
-                    
+
                     let povArray = povArticles.map(element => {
-                        
+
                         let obj = {};
 
                         let splitSource = element.split('     ');
@@ -83,7 +85,7 @@ module.exports = function (app) {
                         obj.source = ssource;
                         obj.pov = spov;
                         obj.tagline = stagline;
-                        
+
                         console.log(obj);
                         return obj;
 
@@ -97,18 +99,18 @@ module.exports = function (app) {
                         newPovArray.push(left);
                     }
 
-                    if (newPovArray.length === 1){
+                    if (newPovArray.length === 1) {
                         console.log('inside if 2')
                         let [center] = povArray.filter(element => element.pov === 'Center');
                         newPovArray.push(center);
                     }
 
-                    if (newPovArray.length === 2){
+                    if (newPovArray.length === 2) {
                         console.log('inside if 3')
                         let [right] = povArray.filter(element => element.pov === 'Right');
                         newPovArray.push(right);
                     }
-                    
+
                     console.log('NEW ARRAY'.silly, newPovArray);
 
                     data.other = newPovArray;
@@ -121,6 +123,7 @@ module.exports = function (app) {
 
                 $('.view-id-story_id_single_child_articles', '#block-views-story-id-single-story-block').each(doOne);
                 data.title = title;
+                data.url = url
                 // console.log("data: ".red, data)
                 newsArray.push(data)
                 data = {}
@@ -131,11 +134,12 @@ module.exports = function (app) {
                 // console.log('========== START HERE ========')
                 title = $('.story-title', "#block-views-story-id-single-story-block-1").text()
                 // console.log("TITLE".red, title)
-
+                url = "https://www.allsides.com" + $('.field-content', "#block-views-story-id-single-story-block-1").find("a").attr("href")
                 section++;
 
                 $('.view-id-story_id_single_child_articles', '#block-views-story-id-single-story-block-1').each(doOne)
                 data.title = title;
+                data.url = url
                 // console.log("data: ".red, data)
                 newsArray.push(data)
                 data = {}
@@ -146,10 +150,11 @@ module.exports = function (app) {
                 // console.log('========== START HERE ========')
                 title = $('.story-title', "#block-views-story-id-single-story-block-2").text()
                 // console.log("TITLE".red, title)
-
+                url = "https://www.allsides.com" + $('.field-content', "#block-views-story-id-single-story-block-2").find("a").attr("href")
                 section++;
                 $('.view-id-story_id_single_child_articles', '#block-views-story-id-single-story-block-2').each(doOne)
                 data.title = title;
+                data.url = url
                 // console.log("data: ".red, data)
                 newsArray.push(data)
 
