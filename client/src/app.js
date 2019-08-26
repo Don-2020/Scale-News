@@ -113,21 +113,21 @@ export default class App extends React.Component {
     <h1 style={style.test2}>Your New(s) Media Habit</h1>
   </Col>
 </Row>
-<Row>
-  <MyVerticallyCenteredModal show={this.state.showModal} onHide={() => this.setModalShow(false)} />
+// <Row>
+//   <MyVerticallyCenteredModal show={this.state.showModal} onHide={() => this.setModalShow(false)} />
 
-  <ModalLogin show={this.state.showModalLogin} onHide={() => this.setModalLoginShow(false)} />
+//   <ModalLogin show={this.state.showModalLogin} onHide={() => this.setModalLoginShow(false)} />
 
-  <div style={{ width: '100%', margin: '0px 30px', marginLeft: '10%' }} >
-    <Button style={{}} onClick={this.openModal} variant="danger" size="lg" block>
-      Sign Up</Button>
+//   <div style={{ width: '100%', margin: '0px 30px', marginLeft: '10%' }} >
+//     <Button style={{}} onClick={this.openModal} variant="danger" size="lg" block>
+//       Sign Up</Button>
 
 
-    <Button id="logIn" onClick={this.openModalLogin} style={style.loginbtn} variant="secondary" size="lg" block>
-      Log In</Button>
-  </div>
+//     <Button id="logIn" onClick={this.openModalLogin} style={style.loginbtn} variant="secondary" size="lg" block>
+//       Log In</Button>
+//   </div>
 
-</Row>
+// </Row>
 
 </Container> */}
 

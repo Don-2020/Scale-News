@@ -10,6 +10,8 @@ import Button from "react-bootstrap/Button";
 import MyVerticallyCenteredModal from "../Components/Modal/modal"
 import ModalLogin from "../Components/Modal1/modal1"
 
+
+
 // TO DO: =================================================
 // Will need to consider when and where topics page will be loaded. Currently state contains full topicsArray when App component mounts. When ready, you will pass state of topicsArray as prop to TopicPage component.
 
@@ -24,6 +26,22 @@ export default class Home extends React.Component {
         news: [],
         topicsArray: []
     }
+
+    openModal = () => {
+        this.setState({ showModal: true })
+      }
+    
+      openModalLogin = () => {
+        this.setState({ showModalLogin: true })
+      }
+      setModalShow = boolean => {
+        this.setState({ showModal: boolean });
+      }
+    
+      setModalLoginShow = boolean => {
+        this.setState({ showModalLogin: boolean });
+      }
+    
 
     componentDidMount() {
         console.log("componenet mounted");
@@ -85,6 +103,8 @@ export default class Home extends React.Component {
                     </Col>
                     </Row>
                     <Row>
+
+                        
                     <MyVerticallyCenteredModal show={this.state.showModal} onHide={() => this.setModalShow(false)} />
 
                     <ModalLogin show={this.state.showModalLogin} onHide={() => this.setModalLoginShow(false)} />
