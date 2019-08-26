@@ -1,6 +1,9 @@
 import React from "react";
 import Button from "../Components/Topic-Button"
 import axios from 'axios';
+import ControlledCarousel from "../Components/Carousel/carousel";
+import { Container, Row, Col } from "../Components/Grid";
+import Carousel from 'react-bootstrap/Carousel';
 
 
 
@@ -9,15 +12,18 @@ class TopicPage extends React.Component {
         super(props);
         this.state = {
             topics: [],
+            topic: null,
             isReady: false,
             error: null
         }
 
+        
+
         console.log('INSIDE TOPIC PAGE COMPONENT: PROPS', this.props);
         // document.body.append("<button type='button'>Click Me!</button>");
 
-        this.popup = document.createElement("button");
-        document.body.appendChild(this.popup);
+        // this.popup = document.createElement("button");
+        // document.body.appendChild(this.popup);
         
         // var g = document.createElement('div');
         // g.setAttribute("id", "list");
@@ -32,6 +38,14 @@ class TopicPage extends React.Component {
         // document.getElementById("List").innerHTML = '<button type="button">Click Me!</button>';
         
 
+    }
+
+    handleClick = (url) =>{
+        alert("suppose to request data releveant to titel");
+        axios.get(url).then(result =>{
+            console.log(result)
+            this.setState({topic: result})
+        }).catch(err => console.log(err))
     }
 
 
@@ -70,7 +84,8 @@ class TopicPage extends React.Component {
                 {this.state.topics.map(topic => (
                     <Button
                         name={topic.Topic}
-                        // link={topic.URL}
+                        link={topic.URL}
+                        scrapeData={this.handleClick}
                     />
                 ))}
             </div>
