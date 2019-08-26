@@ -35,6 +35,8 @@ class ControlledCarousel extends Component {
             <h3>{article.title}</h3>
             <p>{article.paragraph}</p>
 
+          
+
             {article.other.map(opinion => {
 
               let style = {
@@ -48,7 +50,7 @@ class ControlledCarousel extends Component {
               } else {
                 style.backgroundColor = 'blue';
               }
-              return <OpinionBtn id="1" variant="info" style={style}>{opinion.pov}</OpinionBtn>
+              return <OpinionBtn id="1" variant="info" style={style} href={article.url} >{opinion.pov}</OpinionBtn>
             })}
           </Carousel.Caption>
         </Carousel.Item>
