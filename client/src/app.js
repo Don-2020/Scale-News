@@ -85,49 +85,51 @@ export default class App extends React.Component {
         <Router>
           <Wtf />
           <Switch>
+            <Route exact path="/" component={home}/>
             <Route exact path="/Home" component={home}/>
-            <Route exact paht="/Topics" component={TopicPage}/>
-            <Container >
-
-              <Row >
-                <Col size="12">
-
-                  <Carousel>
-                    <ControlledCarousel 
-                      news={this.state.news}
-                    />
-                  </Carousel>
-                </Col>
-              </Row>
-              <Row>
-                <Col size="12">
-                  <h1 style={style.test1}>What’s black white and red all over? </h1>
-                </Col>
-              </Row>
-              <Row>
-                <Col size="12">
-                  <h1 style={style.test2}>Your New(s) Media Habit</h1>
-                </Col>
-              </Row>
-              <Row>
-                <MyVerticallyCenteredModal show={this.state.showModal} onHide={() => this.setModalShow(false)} />
-
-                <ModalLogin show={this.state.showModalLogin} onHide={() => this.setModalLoginShow(false)} />
-
-                <div style={{ width: '100%', margin: '0px 30px', marginLeft: '10%' }} >
-                  <Button style={{}} onClick={this.openModal} variant="danger" size="lg" block>
-                    Sign Up</Button>
-
-
-                  <Button id="logIn" onClick={this.openModalLogin} style={style.loginbtn} variant="secondary" size="lg" block>
-                    Log In</Button>
-                </div>
-
-              </Row>
-
-            </Container>
+            <Route exact path="/Topics" component={TopicPage}/>
           </Switch>
         </Router>
+
+{/* <Container >
+
+<Row >
+  <Col size="12">
+
+    <Carousel>
+      <ControlledCarousel 
+        news={this.state.news}
+      />
+    </Carousel>
+  </Col>
+</Row>
+<Row>
+  <Col size="12">
+    <h1 style={style.test1}>What’s black white and red all over? </h1>
+  </Col>
+</Row>
+<Row>
+  <Col size="12">
+    <h1 style={style.test2}>Your New(s) Media Habit</h1>
+  </Col>
+</Row>
+<Row>
+  <MyVerticallyCenteredModal show={this.state.showModal} onHide={() => this.setModalShow(false)} />
+
+  <ModalLogin show={this.state.showModalLogin} onHide={() => this.setModalLoginShow(false)} />
+
+  <div style={{ width: '100%', margin: '0px 30px', marginLeft: '10%' }} >
+    <Button style={{}} onClick={this.openModal} variant="danger" size="lg" block>
+      Sign Up</Button>
+
+
+    <Button id="logIn" onClick={this.openModalLogin} style={style.loginbtn} variant="secondary" size="lg" block>
+      Log In</Button>
+  </div>
+
+</Row>
+
+</Container> */}
 
         <footer>
           <row>

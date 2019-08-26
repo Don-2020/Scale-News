@@ -1,6 +1,9 @@
 import React from "react";
 // import Button from "../Components/button"
 import axios from 'axios';
+import ControlledCarousel from "../Components/Carousel/carousel";
+import { Container, Row, Col } from "../Components/Grid";
+import Carousel from 'react-bootstrap/Carousel';
 
 class TopicPage extends React.Component {
     constructor(props) {
@@ -31,7 +34,17 @@ class TopicPage extends React.Component {
     // Then map over topics array and create a button for each element in your array (i.e. a button with topicNeat and URL) which are sent as props to each button
     render() {
         return (
-            <div><h1>THIS IS WORKING</h1></div>
+            <div>
+            <Container >
+                <Row >
+                <Col size="12">
+                    <Carousel>
+                    <ControlledCarousel />
+                   </Carousel>
+                </Col>
+                </Row>
+                </Container>
+            </div>
             // <div className="container">
             //     <div className="Jumbotron">
             //         <h1>Topic Choices</h1>
