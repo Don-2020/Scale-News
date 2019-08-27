@@ -45,12 +45,8 @@ export default class App extends React.Component {
             <Col size="4">
               <h1 style={{ color: 'white' }}>h</h1>
             </Col>
-            <Col size="4">
-              <h1 style={{ color: 'white' }}>e</h1>
-            </Col>
-            <Col size="4">
-              <h1 style={{ color: 'white' }}>llo</h1>
-            </Col>
+          
+            
           </row>
         </footer>
 

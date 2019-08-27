@@ -8,7 +8,7 @@ import axios from "axios";
 const CarouselCaptionCss={
   backgroundColor: "rgba(255, 255, 255, 0.6)",
   color: "#5f5f5f",
-  padding: "10px"
+  padding: "40px"
 }
 
 class ControlledCarousel extends Component {
