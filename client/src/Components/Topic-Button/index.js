@@ -15,7 +15,7 @@ function Button(props) {
    
     // // <span onClick={() => props.addArticles(prop.link)}className="scrape"></span>
 
-    <button>{props.name} {props.link}</button>
+    <button onclick="{props.link}">{props.name} </button>
 
   );
 }

@@ -77,17 +77,27 @@ class TopicPage extends React.Component {
         return (
             // <div><h1>THIS IS WORKING</h1></div>
             <div className="container">
-                <div className="Jumbotron-fluid text-center">
-                    <h1>Topic Choices</h1>
-                    <h3>Select up to 1 to view</h3>
-                </div>
+                  <div>
+            <Container >
+                <Row >
+                <Col size="12">
+                    <Carousel>
+                    <ControlledCarousel />
+                   </Carousel>
+                </Col>
+                </Row>
+                </Container>
+            </div>
+            <Container >
                 {this.state.topics.map(topic => (
                     <Button
                         name={topic.Topic}
-                        link={topic.URL}
+                        // link={topic.URL}
                         scrapeData={this.handleClick}
                     />
+                  
                 ))}
+                  </Container>
             </div>
         )
     }

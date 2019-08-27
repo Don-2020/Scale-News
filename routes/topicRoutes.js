@@ -29,7 +29,7 @@ module.exports = function (app) {
 
             var $ = cheerio.load(res.data);
 
-            $(".views-row").each(function (res, data) {
+            $(".views-row.views-row-16").each(function (res, data) {
                 // console.log("**********".info)
                 console.log(res)
                 
@@ -42,7 +42,7 @@ module.exports = function (app) {
                 // console.log("Url".verbose, url)
 
                 var Topic = topic.trim();
-                var URL = "https://www.allsides.com/topics/" + url
+                var URL = "https://www.allsides.com" + url
                 var dataAdd = {
                     Topic,
                     URL
