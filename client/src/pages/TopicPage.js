@@ -9,12 +9,12 @@ class TopicPage extends React.Component {
     constructor(props) {
         super(props)
 
-        console.log('INSIDE TOPIC PAGE COMPONENT: PROPS', this.props) 
+        console.log('INSIDE TOPIC PAGE COMPONENT: PROPS', this.props)
         // -> { icon: 'home', … }
         // include state here that has property:value topics: []
-        
+
     }
-    
+
 
     // method componentDidMount in which you perform your scrape (res)
     // componentDidMount() {
@@ -35,14 +35,20 @@ class TopicPage extends React.Component {
     render() {
         return (
             <div>
-            <Container >
-                <Row >
-                <Col size="12">
-                    <Carousel>
-                    <ControlledCarousel />
-                   </Carousel>
-                </Col>
-                </Row>
+                <Container >
+                    <Row >
+                        <Col size="2"></Col>
+                        <Col size="8">
+
+                            <Carousel>
+                                <ControlledCarousel />
+                            </Carousel>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col size="2"></Col>
+                        <Col size="8"></Col>
+                    </Row>
                 </Container>
             </div>
             // <div className="container">

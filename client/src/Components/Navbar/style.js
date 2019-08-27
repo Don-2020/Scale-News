@@ -1,7 +1,7 @@
 const style = {
     nav: {
         backgroundColor: '#e9e9e9',
-        marginBottom: '50px'
+        marginBottom: '18px'
     },
     
     searchForm: {

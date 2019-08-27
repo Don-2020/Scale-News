@@ -10,7 +10,7 @@ import style from './style'
 import images from './images.js';
 // import { Link } from 'react-router-dom';
 
-function Wtf() {
+function NavNews() {
     return (
         <>
             <Navbar style={style.nav} expand="lg">
@@ -53,4 +53,4 @@ function Wtf() {
         </>
     )
 };
-export default Wtf;
+export default NavNews;
