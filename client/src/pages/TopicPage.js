@@ -5,8 +5,6 @@ import ControlledCarousel from "../Components/Carousel/carousel";
 import { Container, Row, Col } from "../Components/Grid";
 import Carousel from 'react-bootstrap/Carousel';
 
-
-
 class TopicPage extends React.Component {
     constructor(props) {
         super(props);
@@ -46,6 +44,10 @@ class TopicPage extends React.Component {
             console.log(result)
             this.setState({topic: result})
         }).catch(err => console.log(err))
+        console.log('INSIDE TOPIC PAGE COMPONENT: PROPS', this.props)
+        // -> { icon: 'home', … }
+        // include state here that has property:value topics: []
+
     }
 
 
@@ -64,7 +66,7 @@ class TopicPage extends React.Component {
                 if (error) this.setState({ error })
             })
     }
-
+    // redirect={this.redirecTotTopic}
     // addArticle = URL => {
     //     const articles = this.state.articles.filter(artcle =>)
     // }
@@ -75,20 +77,23 @@ class TopicPage extends React.Component {
         console.log(topics)
         console.log("Topics length:", topics.length)
         return (
-            // <div><h1>THIS IS WORKING</h1></div>
-            <div className="container">
-                  <div>
-            <Container >
-                <Row >
-                <Col size="12">
-                    <Carousel>
-                    <ControlledCarousel />
-                   </Carousel>
-                </Col>
-                </Row>
+            <div>
+                <Container >
+                    <Row >
+                        <Col size="2"></Col>
+                        <Col size="8">
+
+                            <Carousel>
+                                <ControlledCarousel />
+                            </Carousel>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col size="2"></Col>
+                        <Col size="8"></Col>
+                    </Row>
                 </Container>
-            </div>
-            <Container >
+                <Container >
                 {this.state.topics.map(topic => (
                     <Button
                         name={topic.Topic}
@@ -99,6 +104,7 @@ class TopicPage extends React.Component {
                 ))}
                   </Container>
             </div>
+            
         )
     }
 }

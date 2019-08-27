@@ -10,16 +10,16 @@ import style from './style'
 import images from './images.js';
 // import { Link } from 'react-router-dom';
 
-function Wtf() {
+function NavNews() {
     return (
         <>
             <Navbar style={style.nav} expand="lg">
-                <Navbar.Brand href="#home"><img alt="logo" src={images[0].src} /></Navbar.Brand>
+                <Navbar.Brand href="/home"><img alt="logo" src={images[0].src} /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>Home</Nav.Link>
-                        <Nav.Link to="/Topic"className={window.location.pathname === "/Topic" ? "nav-link active" : "nav-link"}>Topics</Nav.Link> 
+                        <Nav.Link href="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>Home</Nav.Link>
+                        <Nav.Link href="/Topics" className={window.location.pathname === "/Topics" ? "nav-link active" : "nav-link"}>Topics</Nav.Link>
                         {/* <Link to="/topics">Topic</Link>
 
                         {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
@@ -53,4 +53,4 @@ function Wtf() {
         </>
     )
 };
-export default Wtf;
+export default NavNews;

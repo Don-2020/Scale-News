@@ -1,14 +1,11 @@
 import React from "react";
-import Wtf from "../Components/Navbar/navbar"
 import ControlledCarousel from "../Components/Carousel/carousel"
 import { Container, Row, Col } from "../Components/Grid";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import axios from "axios"
 import Carousel from 'react-bootstrap/Carousel';
 import style from './style.js';
 import Button from "react-bootstrap/Button";
-import MyVerticallyCenteredModal from "../Components/Modal/modal"
-import ModalLogin from "../Components/Modal1/modal1"
+import MyVerticallyCenteredModal from "../Components/Modal/registermodal"
+import ModalLogin from "../Components/Modal1/loginmodal"
 
 
 
@@ -19,11 +16,12 @@ import ModalLogin from "../Components/Modal1/modal1"
 // <TopicPage topics={this.state.topicsArray}/>
 // ========================================================
 
+
+//this page is controlling the loginbuttons- and is rendering the carousel
 export default class Home extends React.Component {
     state = {
         showModal: false,
         showModalLogin: false,
-        news: [],
         topicsArray: []
     }
     redirecTotTopic = ()=>{
@@ -47,84 +45,85 @@ export default class Home extends React.Component {
       }
     
 
+    openModal = () => {
+        this.setState({ showModal: true })
+    }
+
+    openModalLogin = () => {
+        this.setState({ showModalLogin: true })
+    }
+    setModalShow = boolean => {
+        this.setState({ showModal: boolean });
+    }
+
+    setModalLoginShow = boolean => {
+        this.setState({ showModalLogin: boolean });
+    }
+
+
     componentDidMount() {
-        console.log("componenet mounted");
-        // <div id="block-views-story-id-single-story-block"></div>
-        // API call to the scrape route then update the state
-        axios.get("api/scrape")
-            .then(res => {
-
-                console.log("back from the scrape")
-                console.log(res.data.news);
-                console.log(this);
-
-                this.setState({
-                    news: res.data.news
-                });
-
-            })
-
-
-        axios.get("/api/topics/scrape")
-            .then(res => {
-                console.log('THIS IS WORKING****************');
-                console.log(res.data.topicsArray);
-                this.setState({
-                    topicsArray: res.data.topicsArray
-                });
-            })
 
     }
 
 
 
     render() {
-        console.log('CURRENT STATE', this.state)
+
 
 
         return (
 
-            <Router>
 
-                <Container >
 
-                    <Row >
-                        <Col size="12">
+            <Container >
 
-                            <Carousel>
-                                <ControlledCarousel />
-                            </Carousel>
-                        </Col>
-                    </Row>
-                    <Row>
-                    <Col size="12">
+                <Row >
+                    <Col size="2"></Col>
+                    <Col size="8">
+
+                        <Carousel>
+                            <ControlledCarousel />
+                        </Carousel>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col size="2"></Col>
+                    <Col size="8">
                         <h1 style={style.test1}>What’s black white and red all over? </h1>
                     </Col>
-                    </Row>
-                    <Row>
-                    <Col size="12">
+                </Row>
+                <Row>
+                    <Col size="2"></Col>
+                    <Col size="8">
                         <h1 style={style.test2}>Your New(s) Media Habit</h1>
                     </Col>
-                    </Row>
-                    <Row>
+                </Row>
+                <Row>
+                    <Col size="3"></Col>
+                    <Col size="6">
 
-                        
-                    <MyVerticallyCenteredModal show={this.state.showModal} onHide={() => this.setModalShow(false)} />
+                        <MyVerticallyCenteredModal show={this.state.showModal} onHide={() => this.setModalShow(false)} />
 
-                    <ModalLogin show={this.state.showModalLogin} onHide={() => this.setModalLoginShow(false)} />
+                        <ModalLogin show={this.state.showModalLogin} onHide={() => this.setModalLoginShow(false)} />
 
-                    <div style={{ width: '100%', margin: '0px 30px', marginLeft: '10%' }} >
-                        <Button style={{}} onClick={this.openModal} redirect={this.redirecTotTopic} variant="danger" size="lg" block>
-                        Sign Up</Button>
+                        <div style={{ width: '100%', margin: '0px 30px', marginLeft: '0' }} >
+                            <Row>
 
+                                <Col size="6">
+                                    <Button style={{}} onClick={this.openModal} variant="danger" size="lg" block>
+                                        Sign Up</Button>
+                                </Col>
 
-                        <Button id="logIn" onClick={this.openModalLogin} redirect={this.redirecTotTopic} style={style.loginbtn} variant="secondary" size="lg" block>
-                        Log In</Button>
-                    </div>
+                                <Col size="6">
+                                    <Button id="logIn" onClick={this.openModalLogin} style={style.loginbtn} variant="secondary" size="lg" block>
+                                        Log In</Button>
+                                </Col>
+                            </Row>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
 
-                    </Row>
-                </Container>
-            </Router>
         )
     }
 }
