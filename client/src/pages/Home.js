@@ -7,8 +7,8 @@ import axios from "axios"
 import Carousel from 'react-bootstrap/Carousel';
 import style from './style.js';
 import Button from "react-bootstrap/Button";
-import MyVerticallyCenteredModal from "../Components/Modal/modal"
-import ModalLogin from "../Components/Modal1/modal1"
+import MyVerticallyCenteredModal from "../Components/Modal/registermodal"
+import ModalLogin from "../Components/Modal1/loginmodal"
 
 
 
@@ -29,30 +29,30 @@ export default class Home extends React.Component {
 
     openModal = () => {
         this.setState({ showModal: true })
-      }
-    
-      openModalLogin = () => {
+    }
+
+    openModalLogin = () => {
         this.setState({ showModalLogin: true })
-      }
-      setModalShow = boolean => {
+    }
+    setModalShow = boolean => {
         this.setState({ showModal: boolean });
-      }
-    
-      setModalLoginShow = boolean => {
+    }
+
+    setModalLoginShow = boolean => {
         this.setState({ showModalLogin: boolean });
-      }
-    
+    }
+
 
     componentDidMount() {
-        console.log("componenet mounted");
+        // console.log("componenet mounted");
         // <div id="block-views-story-id-single-story-block"></div>
         // API call to the scrape route then update the state
         axios.get("api/scrape")
             .then(res => {
 
-                console.log("back from the scrape")
-                console.log(res.data.news);
-                console.log(this);
+                // console.log("back from the scrape")
+                // console.log(res.data.news);
+                // console.log(this);
 
                 this.setState({
                     news: res.data.news
@@ -63,8 +63,8 @@ export default class Home extends React.Component {
 
         axios.get("/api/topics/scrape")
             .then(res => {
-                console.log('THIS IS WORKING****************');
-                console.log(res.data.topicsArray);
+                // console.log('THIS IS WORKING****************');
+                // console.log(res.data.topicsArray);
                 this.setState({
                     topicsArray: res.data.topicsArray
                 });
@@ -75,7 +75,7 @@ export default class Home extends React.Component {
 
 
     render() {
-        console.log('CURRENT STATE', this.state)
+        // console.log('CURRENT STATE', this.state)
 
 
         return (
@@ -93,30 +93,30 @@ export default class Home extends React.Component {
                         </Col>
                     </Row>
                     <Row>
-                    <Col size="12">
-                        <h1 style={style.test1}>What’s black white and red all over? </h1>
-                    </Col>
+                        <Col size="12">
+                            <h1 style={style.test1}>What’s black white and red all over? </h1>
+                        </Col>
                     </Row>
                     <Row>
-                    <Col size="12">
-                        <h1 style={style.test2}>Your New(s) Media Habit</h1>
-                    </Col>
+                        <Col size="12">
+                            <h1 style={style.test2}>Your New(s) Media Habit</h1>
+                        </Col>
                     </Row>
                     <Row>
 
-                        
-                    <MyVerticallyCenteredModal show={this.state.showModal} onHide={() => this.setModalShow(false)} />
 
-                    <ModalLogin show={this.state.showModalLogin} onHide={() => this.setModalLoginShow(false)} />
+                        <MyVerticallyCenteredModal show={this.state.showModal} onHide={() => this.setModalShow(false)} />
 
-                    <div style={{ width: '100%', margin: '0px 30px', marginLeft: '10%' }} >
-                        <Button style={{}} onClick={this.openModal} variant="danger" size="lg" block>
-                        Sign Up</Button>
+                        <ModalLogin show={this.state.showModalLogin} onHide={() => this.setModalLoginShow(false)} />
+
+                        <div style={{ width: '100%', margin: '0px 30px', marginLeft: '10%' }} >
+                            <Button style={{}} onClick={this.openModal} variant="danger" size="lg" block>
+                                Sign Up</Button>
 
 
-                        <Button id="logIn" onClick={this.openModalLogin} style={style.loginbtn} variant="secondary" size="lg" block>
-                        Log In</Button>
-                    </div>
+                            <Button id="logIn" onClick={this.openModalLogin} style={style.loginbtn} variant="secondary" size="lg" block>
+                                Log In</Button>
+                        </div>
 
                     </Row>
                 </Container>

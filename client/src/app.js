@@ -6,14 +6,14 @@ import { Container, Row, Col } from "./Components/Grid";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import style from './style'
 import Button from "react-bootstrap/Button";
-import MyVerticallyCenteredModal from "./Components/Modal/modal"
+import MyVerticallyCenteredModal from "./Components/Modal/registermodal"
 // import Topics from './pages/Topic';
-import ModalLogin from "./Components/Modal1/modal1"
+import ModalLogin from "./Components/Modal1/loginmodal"
 import axios from "axios"
 import Carousel from 'react-bootstrap/Carousel'
 import TopicPage from './pages/TopicPage'
 import home from './pages/Home'
-
+import login from './Components/Modal1/loginmodal'
 // TO DO: =================================================
 // Will need to consider when and where topics page will be loaded. Currently state contains full topicsArray when App component mounts. When ready, you will pass state of topicsArray as prop to TopicPage component.
 
@@ -30,15 +30,15 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log("componenet mounted");
+    // console.log("componenet mounted");
     // <div id="block-views-story-id-single-story-block"></div>
     // API call to the scrape route then update the state
     axios.get("api/scrape")
       .then(res => {
 
-        console.log("back from the scrape")
-        console.log(res.data.news);
-        console.log(this);
+        // console.log("back from the scrape")
+        // console.log(res.data.news);
+        // console.log(this);
 
         this.setState({
           news: res.data.news
@@ -49,8 +49,8 @@ export default class App extends React.Component {
 
     axios.get("/api/topics/scrape")
       .then(res => {
-        console.log('THIS IS WORKING****************');
-        console.log(res.data.topicsArray);
+        // console.log('THIS IS WORKING****************');
+        // console.log(res.data.topicsArray);
         this.setState({
           topicsArray: res.data.topicsArray
         });
@@ -85,13 +85,14 @@ export default class App extends React.Component {
         <Router>
           <Wtf />
           <Switch>
-            <Route exact path="/" component={home}/>
-            <Route exact path="/Home" component={home}/>
-            <Route exact path="/Topics" component={TopicPage}/>
+            <Route exact path="/login" component={login} />
+            <Route exact path="/" component={home} />
+            <Route exact path="/Home" component={home} />
+            <Route exact path="/Topics" component={TopicPage} />
           </Switch>
         </Router>
 
-{/* <Container >
+        {/* <Container >
 
 <Row >
   <Col size="12">
@@ -140,13 +141,12 @@ export default class App extends React.Component {
               <h1 style={{ color: 'white' }}>e</h1>
             </Col>
             <Col size="4">
-            <h1 style={{ color: 'white' }}>llo</h1>
+              <h1 style={{ color: 'white' }}>llo</h1>
             </Col>
-       </row> 
-       </footer>
-   
+          </row>
+        </footer>
+
       </div>
-        )
-      }
-    }
-    
+    )
+  }
+}
