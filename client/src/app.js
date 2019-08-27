@@ -63,7 +63,7 @@ export default class App extends React.Component {
 
         </Router>
 
-        <footer>
+        {/* <footer>
           <row>
             <Col size="4">
               <h1 style={{ color: 'white' }}>h</h1>
@@ -71,7 +71,7 @@ export default class App extends React.Component {
           
             
           </row>
-        </footer>
+        </footer> */}
 
       </div>
     )

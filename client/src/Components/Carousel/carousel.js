@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import OpinionBtn from '../Button/OpinionBtn';
-import "./carousel.css";
+// import "./carousel.css";
 import axios from "axios";
 
 const CarouselCaptionCss={

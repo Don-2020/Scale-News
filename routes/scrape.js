@@ -74,13 +74,6 @@ module.exports = function (app) {
                     if (src1) {
                         data.image = src1;
                     }
-<<<<<<< HEAD
-                    ///// here
-                    
-                    // let povArray = []
-=======
-
->>>>>>> master
                     let povArray = povArticles.map(element => {
 
                         let obj = {};
@@ -102,12 +95,12 @@ module.exports = function (app) {
                     })
 
                     // console.log("I am opinion".red, povArray);
-
-<<<<<<< HEAD
-                    data.other = povArray;
-
-                    
-=======
+                    const newPovArray = []
+                    if(!newPovArray.length){
+                        console.log("inside if 1");
+                        let [left] = povArray.filter(element => element.pov === 'Left');
+                        newPovArray.push(left);
+                    }
                     if (newPovArray.length === 1) {
                         console.log('inside if 2')
                         let [center] = povArray.filter(element => element.pov === 'Center');
@@ -124,7 +117,6 @@ module.exports = function (app) {
 
                     data.other = newPovArray;
 
->>>>>>> master
                 }
 
 
